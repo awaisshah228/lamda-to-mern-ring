@@ -26,7 +26,7 @@ const api = express.Router();
 
 const specs = swaggerJsDoc(options);
 api.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
-api.use("/test", require('./lambdaRouter'));
+api.use("/", require('./lambdaRouter'));
 
 
 

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const validateRequest = require("../middlewares/validate-request");
-const { body } = require("express-validator");
+const { body, param } = require("express-validator");
 
 const getDistributionDateStockMerf = require("../controllers/getDistributionDateStockMerf");
 const getHospitalDateStock = require("../controllers/getHospitalDateStock");
@@ -25,8 +25,18 @@ const addMerfStockRequest = require("../controllers/addMerfStockRequest");
  *
  */
 
-router.get("/distribution_date_stock_merf", getDistributionDateStockMerf);
-router.get("/hospital_date_stock", getHospitalDateStock);
+router.get(
+  "/distribution_date_stock_merf",
+
+  getDistributionDateStockMerf
+);
+
+router.get(
+  "/hospital_date_stock",
+
+  getHospitalDateStock
+);
+
 router.get("/merf_report", merfmlmisbincardreport);
 
 router.post(
