@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const validateRequest = require("../middlewares/validate-request");
-const { body, param } = require("express-validator");
+const { body, param, query } = require("express-validator");
 
 const getDistributionDateStockMerf = require("../controllers/getDistributionDateStockMerf");
 const getHospitalDateStock = require("../controllers/getHospitalDateStock");
@@ -27,6 +27,12 @@ const addMerfStockRequest = require("../controllers/addMerfStockRequest");
 
 router.get(
   "/distribution_date_stock_merf",
+  [
+    query("distributionID").notEmpty(),
+    query("date").notEmpty(),
+    query("itemType").notEmpty(),
+  ],
+  validateRequest,
 
   getDistributionDateStockMerf
 );
@@ -34,6 +40,12 @@ router.get(
 router.get(
   "/hospital_date_stock",
 
+  [
+    query("hospitalID").notEmpty(),
+    query("date").notEmpty(),
+    query("itemType").notEmpty(),
+  ],
+  validateRequest,
   getHospitalDateStock
 );
 
